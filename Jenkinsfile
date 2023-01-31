@@ -19,7 +19,7 @@ pipeline {
         }
     stage ("login"){
       steps{
-          sh 'echo $DOCKERHUB_CREDENTALS_PEW | docker login -u $DOCKERHUB_CREDENTALS_USR --password-stdin   '
+          sh 'echo $DOCKERHUB_CREDENTALS_PEW | docker login -u $DOCKERHUB_CREDENTALS_USR meather601   '
             }
         } 
     stage ("push"){
