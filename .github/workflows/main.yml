@@ -1,18 +1,13 @@
 name: VPN Connection
 
-on:
-  push:
-    branches: [ main ]
+on: [push]
 
 jobs:
-  vpn:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      
-      - name: Install OpenVPN
-        run: sudo apt-get update && sudo apt-get install -y openvpn
       
       - name: Download VPN configuration files
         run: |
@@ -20,4 +15,5 @@ jobs:
           unzip config.zip -d /etc/openvpn/config/
       
       - name: Start VPN connection
-        run: sudo openvpn /etc/openvpn/config/vpn.conf
+        run: |
+          sudo openvpn /etc/openvpn/config/vpn.conf --auth-user-pass /etc/openvpn/auth.txt
