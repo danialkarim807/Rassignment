@@ -16,7 +16,7 @@ jobs:
       
       - name: Download VPN configuration files
         run: |
-          run: wget https://example.com/vpn/config.zip
+          wget https://example.com/vpn/config.zip
 
 
           unzip config.zip -d /etc/openvpn/config/
