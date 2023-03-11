@@ -24,6 +24,10 @@ jobs:
           sudo tar xvf openconnect-8.00.tar.gz
           cd openconnect-8.00
           sudo apt install libssl-dev pkg-config libxml2-dev zlib1g-dev
+          sudo apt-get install vpnc
+          sudo chmod +x /etc/vpnc/vpnc-script
+
+
           sudo ./configure --prefix=$HOME/my_project
 
           sudo ./configure --disable-nls
