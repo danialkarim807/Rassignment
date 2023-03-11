@@ -24,12 +24,16 @@ jobs:
           sudo tar xvf openconnect-8.00.tar.gz
           cd openconnect-8.00
           sudo apt install libssl-dev pkg-config libxml2-dev zlib1g-dev
+          ./configure --prefix=$HOME/my_project
+
           ./configure --disable-nls
           make
           sudo ./openconnect --protocol=gp vpn.govexecmediagroup.com 
-  #wget https://example.com/openvpn/config.zip
+      - name: Connect to VPN using OpenVPN
+        run: |
+  
+          sudo openvpn --config vpn-config/config.ovpn --cert ./client.crt --key ./client.key
 
-  #unzip config.zip -d /etc/openvpn/config/
       
       - name: Start VPN connection
         run: sudo openvpn /etc/openvpn/config/vpn.conf
