@@ -16,14 +16,13 @@ jobs:
           sudo apt-get update 
           sudo apt-get install -y openvpn
           sudo apt install -y openvpn openvpn-systemd-resolved
-          sudo openvpn --config vpn-config/config.ovpn --cert ./client.crt --key ./client.key
      
       
       - name: Download VPN configuration files
         run: |
-          wget https://example.com/vpn/config.zip
+          wget https://example.com/openvpn/config.zip
 
-          unzip config.zip -d /etc/vpn/config/
+          unzip config.zip -d /etc/openvpn/config/
       
       - name: Start VPN connection
         run: sudo openvpn /etc/openvpn/config/vpn.conf
