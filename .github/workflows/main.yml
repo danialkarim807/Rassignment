@@ -18,8 +18,7 @@ jobs:
         run: |
           wget https://example.com/vpn/config.zip
 
-
-          unzip config.zip -d /etc/openvpn/config/
+          unzip config.zip -d /etc/vpn/config/
       
       - name: Start VPN connection
         run: sudo openvpn /etc/openvpn/config/vpn.conf
