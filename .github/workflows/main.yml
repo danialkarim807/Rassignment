@@ -25,7 +25,7 @@ jobs:
           cd openconnect-8.00
           sudo apt install libssl-dev pkg-config libxml2-dev zlib1g-dev
           sudo apt-get install vpnc
-           chmod +x  /usr/sbin/vpnc /etc/vpnc/vpnc-script
+          sudo chmod +x  /usr/sbin/vpnc/etc/vpnc/vpnc-script
 
 
 
