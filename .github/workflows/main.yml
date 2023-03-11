@@ -25,6 +25,7 @@ jobs:
           cd openconnect-8.00
           sudo apt install libssl-dev pkg-config libxml2-dev zlib1g-dev
           
+          sudo ./configure --with-vpnc-script=/etc/vpnc/vpnc-script
 
           sudo ./configure --disable-nls
           make
@@ -36,4 +37,5 @@ jobs:
 
       
       - name: Start VPN connection
-        run: sudo openvpn /etc/openvpn/config/vpn.conf
+        run: |
+          sudo openvpn /etc/openvpn/config/vpn.conf
