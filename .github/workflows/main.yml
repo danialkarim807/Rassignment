@@ -24,11 +24,9 @@ jobs:
           sudo tar xvf openconnect-8.00.tar.gz
           cd openconnect-8.00
           sudo apt install libssl-dev pkg-config libxml2-dev zlib1g-dev
-          
-          sudo ./configure --with-vpnc-script=/etc/vpnc/vpnc-script
 
           sudo ./configure --disable-nls
-          make
+          
           sudo ./openconnect --protocol=gp vpn.govexecmediagroup.com 
       - name: Connect to VPN using OpenVPN
         run: |
