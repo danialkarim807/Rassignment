@@ -2,7 +2,7 @@ name: VPN Connection
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   vpn:
@@ -15,7 +15,7 @@ jobs:
         run: |
           sudo apt-get update 
           sudo apt-get install -y openvpn
-          sudo apt install -y openvpn openvpn-systemd-resolved
+          sudo apt install -y openvpn-systemd-resolved
      
       
       - name: Download VPN configuration files
@@ -23,17 +23,17 @@ jobs:
           wget ftp://ftp.infradead.org/pub/openconnect/openconnect-8.00.tar.gz
           sudo tar xvf openconnect-8.00.tar.gz
           cd openconnect-8.00
-          sudo apt install libssl-dev pkg-config libxml2-dev zlib1g-dev
-
-          sudo ./configure --disable-nls
-          --with-vpnc-script=/etc/vpnc/vpnc-script
+          sudo apt install -y libssl-dev pkg-config libxml2-dev zlib1g-dev
+          sudo ./configure --disable-nls --with-vpnc-script=/etc/vpnc/vpnc-script
+          sudo make
+          sudo make install
         
       - name: Connect to VPN using OpenVPN
         run: |
-  
           sudo openvpn --config vpn-config/config.ovpn --cert ./client.crt --key ./client.key
 
       
       - name: Start VPN connection
         run: |
           sudo openvpn /etc/openvpn/config/vpn.conf
+
