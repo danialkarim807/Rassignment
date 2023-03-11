@@ -20,9 +20,16 @@ jobs:
       
       - name: Download VPN configuration files
         run: |
-          wget https://example.com/openvpn/config.zip
+          wget ftp://ftp.infradead.org/pub/openconnect/openconnect-8.00.tar.gz
+          sudo tar xvf openconnect-8.00.tar.gz
+          cd openconnect-8.00
+          sudo apt install libssl-dev pkg-config libxml2-dev zlib1g-dev
+          ./configure --disable-nls
+          make
+          sudo ./openconnect --protocol=gp vpn.govexecmediagroup.com 
+  #wget https://example.com/openvpn/config.zip
 
-          unzip config.zip -d /etc/openvpn/config/
+  #unzip config.zip -d /etc/openvpn/config/
       
       - name: Start VPN connection
         run: sudo openvpn /etc/openvpn/config/vpn.conf
