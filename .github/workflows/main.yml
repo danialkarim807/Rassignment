@@ -27,7 +27,7 @@ jobs:
 
           sudo ./configure --disable-nls
           --with-vpnc-script=/etc/vpnc/vpnc-script
-          sudo ./openconnect --protocol=gp vpn.govexecmediagroup.com 
+        
       - name: Connect to VPN using OpenVPN
         run: |
   
